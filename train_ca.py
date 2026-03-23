@@ -91,15 +91,12 @@ def initialize_model(shape, layer_dims, nhood=1, num_classes=2, totalistic=False
     #model.add(tf.keras.layers.Reshape(target_shape=(-1, wspan, hspan)))
     return model
 
-
 def logit_to_pred(logits, shape=None):
     """
     Given logits in the form of a network output, convert them to 
     images
     """
-    
-    labels = tf.argmax(tf.nn.softmax(logits), 
-                                axis=-1), 
+    labels = tf.argmax(tf.nn.softmax(logits), axis=-1)
     if shape:                 
         out = tf.reshape(labels, shape)
     return out
